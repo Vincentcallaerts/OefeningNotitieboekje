@@ -9,7 +9,7 @@ namespace OefeningNotitieboekje
     class Notitie
     {
         private string opschrift;
-
+        public DateTime AanmaakMoment { get; private set; }
         public string Opschrift
         {
             get { return opschrift; }
@@ -18,16 +18,17 @@ namespace OefeningNotitieboekje
         public Notitie() 
         {
             Console.Write("Schrijf iets op de notitie: ");
-            Opschrift = Console.ReadLine();   
+            Opschrift = Console.ReadLine();
+            AanmaakMoment = DateTime.Now;
         }
         public Notitie(string opschrift)
-        {
-            
+        {          
             Opschrift = opschrift;
+            AanmaakMoment = DateTime.Now;
         }
         public void Info()
         {
-            Console.WriteLine($"Op deze notitie staat nu:\n{Opschrift}");
+            Console.WriteLine($"Notitie aangemaakt op {AanmaakMoment.ToString("dd/MM/yyyy HH:mm:ss")}:\n{Opschrift}");
         }
         public void Bijschrijven()
         {
